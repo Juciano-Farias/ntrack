@@ -3,16 +3,31 @@ const pianoKeys = document.querySelectorAll(".key");
 const audioFileInput = document.getElementById("arquivo");
 const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
+const stopButton = document.getElementById("stop");
 
 const audioLength = document.getElementById("audio-length");
 const currentTime = document.getElementById("current-time");
 
 const progressBar = document.getElementById("progress-bar");
-
-// Equ
+const bars = document.querySelectorAll(".bar");
 
 // Audio variables
 let audio = new Audio();
+let audioContext = new AudioContext();
+let analyser = audioContext.createAnalyser();
+analyser.fftSize = 256;
+let frequencyData = new Uint8Array(analyser.frequencyBinCount);
+
+// Update the equalizer
+function updateEqualizer() {
+  requestAnimationFrame(updateEqualizer);
+  analyser.getByteFrequencyData(frequencyData);
+  bars.forEach((bar, i) => {
+    console.log(i);
+    const value = frequencyData[i];
+    bar.style.height = value + "px";
+  });
+}
 
 // Change the audio
 audioFileInput.addEventListener("change", function () {
@@ -22,20 +37,42 @@ audioFileInput.addEventListener("change", function () {
   const reader = new FileReader();
   reader.onload = function () {
     audio.src = reader.result;
+    // Await the audio data to be ready
+    audio.addEventListener("loadedmetadata", function () {
+      const source = createMediaElementSource();
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+    });
   };
   reader.readAsDataURL(file);
-
-  console.log(audio)
 });
+
+// Create and AudioElementContext
+function createMediaElementSource() {
+  return audioContext.createMediaElementSource(audio);
+}
 
 // Play the audio
 playButton.addEventListener("click", function () {
+  updateEqualizer()
+  playButton.classList.add("hidden")
+  pauseButton.classList.remove("hidden")
   audio.play();
 });
 
-// Stop the audio
+// Pause the audio
 pauseButton.addEventListener("click", function () {
+  pauseButton.classList.add("hidden")
+  playButton.classList.remove("hidden")
   audio.pause();
+});
+
+// Stop the audio
+stopButton.addEventListener("click", function () {
+  audio.load();
+  pauseButton.classList.add("hidden")
+  playButton.classList.remove("hidden")
+  progressBar.style.left = "1px";
 });
 
 // Audio duration
