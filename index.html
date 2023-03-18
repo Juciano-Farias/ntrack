@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="shortcut icon" href="./assets/images/favicon2.ico" />
     <title>N-Track</title>
+
     <meta
       name="description"
       content="Audio and music recording, editing and mixing software for Windows, Mac, iOS and Android. Record your music easily from your computer or smartphone."
@@ -24,7 +24,77 @@
     <meta property="og:site_name" content="n-Track Software" />
   </head>
   <body>
-    Hello world
+    <div class="parent">
+      <div class="div1">
+        <div class="upload-box">
+          <label class="custom-file-upload">
+            <input type="file" id="arquivo" accept="audio/*" />
+            <img src="./assets/icons/upload.svg" alt="Audio input" width="20" />
+          </label>
+        </div>
+        <p>top</p>
+      </div>
+      <main>
+        <div class="paino">
+          <div class="keys">
+            <div class="black-keys">
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+              <div class="key black-key"></div>
+            </div>
+            <div class="white-keys">
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+              <div class="key white-key"></div>
+            </div>
+          </div>
+        </div>
+        <p>main</p>
+      </main>
+      <div class="div3">middle</div>
+      <div class="div4">left</div>
+      <div class="div5"><div id="progress-bar"></div></div>
+      <div class="div6">music wave</div>
+      <div class="div7">right</div>
+      <div class="div8">
+        <div id="equalizer">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+      <div class="div9">lat</div>
+      <div class="div10">bottom</div>
+      <div class="div11">
+        <div id="current-time"></div>
+        <button id="play"><img src="./assets/icons/play.svg" alt="Play input" width="20" /></button>
+        <button id="pause"><img src="./assets/icons/pause.svg" alt="Pause input" width="20" /></button>
+        <div id="audio-length"></div>
+      </div>
+    </div>
   </body>
   <script src="./js/index.js"></script>
 </html>
