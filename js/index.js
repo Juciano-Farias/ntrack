@@ -15,7 +15,7 @@ const bars = document.querySelectorAll(".bar");
 let audio = new Audio();
 let audioContext = new AudioContext();
 let analyser = audioContext.createAnalyser();
-analyser.fftSize = 256;
+analyser.fftSize = 2048;
 let frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
 // Update the equalizer
