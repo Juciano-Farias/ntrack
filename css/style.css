@@ -84,8 +84,8 @@ main {
 }
 
 .bar {
-  width: 2px;
-  margin: 0 5px;
+  width: 1px;
+  margin: 0 3px;
   background-color: #8dff8e;
 }
 
@@ -198,7 +198,7 @@ main p {
 .div8 {
   display: flex;
   align-items: end;
-  background-color: #5c0a0c;
+  background-color: #28292a;
   grid-area: 2 / 2 / 20 / 6;
 }
 .div9 {
