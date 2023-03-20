@@ -45,6 +45,7 @@ audioFileInput.addEventListener("change", function () {
     });
   };
   reader.readAsDataURL(file);
+  audioContext.resume().then(() => alert("audiocontext funcionando"))
 });
 
 // Create and AudioElementContext
@@ -54,7 +55,6 @@ function createMediaElementSource() {
 
 // Play the audio
 playButton.addEventListener("click", function () {
-  updateEqualizer()
   playButton.classList.add("hidden")
   pauseButton.classList.remove("hidden")
   audio.play();
@@ -80,6 +80,13 @@ audio.addEventListener("loadedmetadata", function () {
   const minutes = Math.floor(audio.duration / 60);
   const seconds = Math.floor(audio.duration % 60);
   audioLength.textContent = `Duration ${minutes}:${seconds.toString().padStart(2, "0")}`;
+});
+
+audio.addEventListener("loadedmetadata", function () {
+  const source = createMediaElementSource();
+  source.connect(analyser);
+  analyser.connect(audioContext.destination);
+  updateEqualizer();
 });
 
 // Audio current time
