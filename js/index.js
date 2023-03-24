@@ -11,6 +11,9 @@ const currentTime = document.getElementById("current-time");
 const progressBar = document.getElementById("progress-bar");
 const bars = document.querySelectorAll(".bar");
 
+const progressWave = document.querySelector(".wave-progress");
+const waves = document.querySelectorAll(".wave-bar");
+
 // Audio variables
 let audio = new Audio();
 let audioContext = new AudioContext();
@@ -23,11 +26,29 @@ function updateEqualizer() {
   requestAnimationFrame(updateEqualizer);
   analyser.getByteFrequencyData(frequencyData);
   bars.forEach((bar, i) => {
-    console.log(i);
     const value = frequencyData[i];
     bar.style.height = value + "px";
   });
 }
+
+function update() {
+  // Solicite que a função seja executada novamente na próxima atualização de quadro
+  requestAnimationFrame(update);
+
+  // Analise as frequências
+  analyser.getByteFrequencyData(frequencyData);
+  // Atualize a altura das barras com base na intensidade do som
+
+  waves.forEach((wave, i) => {
+    let barHeight = (frequencyData[i] / 255) * 60;
+    wave.style.height = `${barHeight}px`;
+  });
+}
+
+audio.addEventListener("canplaythrough", function () {
+  console.log("can play");
+  requestAnimationFrame(update);
+});
 
 // Change the audio
 audioFileInput.addEventListener("change", function () {
@@ -45,7 +66,7 @@ audioFileInput.addEventListener("change", function () {
     });
   };
   reader.readAsDataURL(file);
-  audioContext.resume().then(() => alert("audiocontext funcionando"))
+  audioContext.resume();
 });
 
 // Create and AudioElementContext
@@ -55,23 +76,24 @@ function createMediaElementSource() {
 
 // Play the audio
 playButton.addEventListener("click", function () {
-  playButton.classList.add("hidden")
-  pauseButton.classList.remove("hidden")
+  playButton.classList.add("hidden");
+  pauseButton.classList.remove("hidden");
   audio.play();
 });
 
 // Pause the audio
 pauseButton.addEventListener("click", function () {
-  pauseButton.classList.add("hidden")
-  playButton.classList.remove("hidden")
+  pauseButton.classList.add("hidden");
+  playButton.classList.remove("hidden");
   audio.pause();
 });
 
 // Stop the audio
 stopButton.addEventListener("click", function () {
   audio.load();
-  pauseButton.classList.add("hidden")
-  playButton.classList.remove("hidden")
+  pauseButton.classList.add("hidden");
+  playButton.classList.remove("hidden");
+  progressWave.style.left = "0px";
   progressBar.style.left = "1px";
 });
 
@@ -83,8 +105,6 @@ audio.addEventListener("loadedmetadata", function () {
 });
 
 audio.addEventListener("loadedmetadata", function () {
-  const source = createMediaElementSource();
-  source.connect(analyser);
   analyser.connect(audioContext.destination);
   updateEqualizer();
 });
@@ -102,6 +122,15 @@ audio.addEventListener("timeupdate", function () {
   progressBar.style.left = progress * 100 + "%";
   if (progress * 100 == 100) {
     progressBar.style.left = "1px";
+  }
+});
+
+// Progress
+audio.addEventListener("timeupdate", function () {
+  const progress = audio.currentTime / audio.duration;
+  progressWave.style.left = progress * 100 + "%";
+  if (progress == 1) {
+    progressWave.style.left = "0px";
   }
 });
 

@@ -53,6 +53,7 @@
   margin: 0 10px;
   height: 100%;
   background-color: #f89938;
+  transition: all 0.3s linear;
 }
 
 input[type="file"] {
@@ -87,6 +88,33 @@ main {
   width: 1px;
   margin: 0 3px;
   background-color: #8dff8e;
+}
+
+.wave {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.wave-bar {
+  width: 2px;
+  height: 10px;
+  margin: 0 2.9px;
+  background-color: #d0fed1;
+}
+
+.wave-progress {
+  position: absolute;
+  left: 0px;
+  top: -3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 0 10px;
+  background-color: #8dff8e;
+  transition: all 0.3s linear;
 }
 
 main p {
@@ -188,6 +216,9 @@ main p {
   grid-area: 4 / 8 / 9 / 22;
 }
 .div6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f89938;
   grid-area: 2 / 8 / 4 / 22;
 }
@@ -217,15 +248,16 @@ main p {
   grid-area: 20 / 1 / 21 / 25;
 }
 
-.hidden{
+.hidden {
   display: none !important;
 }
 
-#play,#pause, #stop{
+#play,
+#pause,
+#stop {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2px 5px;
   cursor: pointer;
 }
-
