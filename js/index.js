@@ -93,15 +93,20 @@ stopButton.addEventListener("click", function () {
   audio.load();
   pauseButton.classList.add("hidden");
   playButton.classList.remove("hidden");
-  progressWave.style.left = "0px";
-  progressBar.style.left = "1px";
+  progressBar.style.left = "0px";
+});
+
+// When the audio stop
+audio.addEventListener("ended", function () {
+  pauseButton.classList.add("hidden");
+  playButton.classList.remove("hidden");
 });
 
 // Audio duration
 audio.addEventListener("loadedmetadata", function () {
   const minutes = Math.floor(audio.duration / 60);
   const seconds = Math.floor(audio.duration % 60);
-  audioLength.textContent = `Duration ${minutes}:${seconds.toString().padStart(2, "0")}`;
+  audioLength.textContent = `- Duration ${minutes}:${seconds.toString().padStart(2, "0")}`;
 });
 
 audio.addEventListener("loadedmetadata", function () {

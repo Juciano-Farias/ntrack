@@ -60,10 +60,9 @@ input[type="file"] {
   display: none;
 }
 
+
 button {
-  padding: 0 4px;
-  margin: 0 8px;
-  background-color: #f89938;
+  margin-left: 5px;
   border: none;
   border-radius: 5px;
 }
@@ -100,21 +99,9 @@ main {
 
 .wave-bar {
   width: 2px;
-  height: 10px;
+  height: 0px;
   margin: 0 2.9px;
   background-color: #d0fed1;
-}
-
-.wave-progress {
-  position: absolute;
-  left: 0px;
-  top: -3px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin: 0 10px;
-  background-color: #8dff8e;
-  transition: all 0.3s linear;
 }
 
 main p {
@@ -242,10 +229,22 @@ main p {
 }
 .div11 {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #212426;
   grid-area: 20 / 1 / 21 / 25;
+}
+
+.audio-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-timer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hidden {
