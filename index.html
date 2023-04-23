@@ -25,7 +25,7 @@
   </head>
   <body>
     <div class="parent">
-      <div class="div1">
+      <header class="div1">
         <div class="upload-box">
           <label class="custom-file-upload">
             <input type="file" id="arquivo" accept="audio/*" />
@@ -33,7 +33,7 @@
           </label>
         </div>
         <p>top</p>
-      </div>
+      </header>
       <main>
         <div class="paino">
           <div class="keys">
@@ -69,9 +69,9 @@
         </div>
         <p>main</p>
       </main>
-      <div class="div3">middle</div>
-      <div class="div4">left</div>
-      <div class="div5">
+      <section class="div3">middle</section>
+      <section class="div4">left</section>
+      <section class="div5">
         <div id="progress-bar"></div>
         <div class="wave">
           <div class="wave-bar"></div>
@@ -187,10 +187,10 @@
           <div class="wave-bar"></div>
           <div class="wave-bar"></div>
         </div>
-      </div>
-      <div class="div6"></div>
-      <div class="div7">right</div>
-      <div class="div8">
+      </section>
+      <section class="div6"></section>
+      <section class="div7">right</section>
+      <section class="div8">
         <div id="equalizer">
           <div class="bar"></div>
           <div class="bar"></div>
@@ -225,27 +225,23 @@
           <div class="bar"></div>
           <div class="bar"></div>
         </div>
-      </div>
-      <div class="div9">lat</div>
+      </section>
+      <aside class="div9">lat</aside>
       <div class="div10">bottom</div>
-      <div class="div11">
+      <footer class="div11">
         <div class="audio-buttons">
           <button id="play"><img src="./assets/icons/play.svg" alt="Play input" width="20" /></button>
           <button id="pause" class="hidden"><img src="./assets/icons/pause.svg" alt="Pause input" width="20" /></button>
           <button id="stop"><img src="./assets/icons/stop.svg" alt="Pause input" width="20" /></button>
-          <!-- <button id="stop"><img src="./assets/icons/stop.svg" alt="Pause input" width="20" /></button>
-          <button id="stop"><img src="./assets/icons/stop.svg" alt="Pause input" width="20" /></button>
-          <button id="stop"><img src="./assets/icons/stop.svg" alt="Pause input" width="20" /></button>
-          <button id="stop"><img src="./assets/icons/stop.svg" alt="Pause input" width="20" /></button> -->
         </div>
         <div class="audio-timer">
           <div id="current-time">0:00</div>
           <div id="audio-length">0:00</div>
         </div>
         <div>
-          <span style="padding-right: 150px;">footer</span>
+          <span style="padding-right: 150px">footer</span>
         </div>
-      </div>
+      </footer>
     </div>
   </body>
   <script src="./js/index.js"></script>
